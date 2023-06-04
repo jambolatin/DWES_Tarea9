@@ -12,17 +12,21 @@
  *
  */
 function mostrarAPI(){
-    $url= "https://datos.madrid.es/egob/catalogo/205026-0-cementerios.json";
+    $url= "https://datosabiertos.regiondemurcia.es/catalogo/recursos/ayuntamiento-de-molina-de-segura/elec-municipal-2007.json";
     $result = file_get_contents($url);
     $datos = json_decode($result, true);
 
-    echo "<h2>Lista de cementerios de la comunidad de Madrid</h2>";
+    echo "<h2>Listado de mesas electorales de la comunidad de Murcia</h2>";
 
-    foreach($datos["@graph"] as $dato)
+    foreach($datos as $dato)
     {
-        echo "ID: ".$dato["id"]."<br>"; 
-        echo "Nombre: ".$dato["title"]."<br>";
-    }
+        echo "Distrito: ".$dato["distrito"]."<br>";
+        echo "Sección: ".$dato["seccion"]."<br>";
+        echo "Mesa: ".$dato["mesa"]."<br>";
+        echo "Colegio: ".$dato["colegio"]."<br>";
+        echo "<hr>";
+       
+}
 }
 
 mostrarAPI();
